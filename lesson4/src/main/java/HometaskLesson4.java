@@ -10,9 +10,10 @@ public class HometaskLesson4 {
         Scanner scanner = new Scanner(System.in);
         int numToFind = scanner.nextInt();
         int[] arr1 = new int[]{5,2,6,8,3,5,9,12,45,1};
+        Arrays.sort(arr1);                             //перечитал как работает бинарный поиск
         int index = Arrays.binarySearch(arr1, numToFind);
-        if (index >= 0) System.out.println("Заданное число " + numToFind + " входит в массив.");
-        else System.out.println("Заданное число " + numToFind + " не входит в массив.");
+        if (index >= 0) {System.out.println("Заданное число " + numToFind + " входит в массив.");}
+        else {System.out.println("Заданное число " + numToFind + " не входит в массив.");}
 
         //1. Создайте массив целых чисел. Удалите все вхождения заданного
         //числа из массива.
@@ -22,7 +23,7 @@ public class HometaskLesson4 {
         int[] arr2 = new int[]{5,2,6,8,3,5,9,12,45,1};
         int numToDel = scanner.nextInt();
         int[] newArray = hometaskLesson4.newArray(arr2, numToDel);
-        if (newArray != null) System.out.println(Arrays.toString(newArray));
+        System.out.println(Arrays.toString(newArray));
 
 //        2. Создайте и заполните массив случайным числами и выведете
 //        максимальное, минимальное и среднее значение.
@@ -43,46 +44,37 @@ public class HometaskLesson4 {
         int[] array2 = new int[]{6,7,8,9,10};
         int summ1 = 0;
         int summ2 = 0;
-        for (int i : array1) summ1 += i;
-        for (int i : array2) summ2 += i;
+        for (int i : array1) { summ1 += i; }
+        for (int i : array2) {summ2 += i;}
         int medVal1 = summ1 / array1.length;
         int medVal2 = summ2 / array2.length;
-        if (summ1 > summ2) System.out.println("Среднее значение элементов первого массива больше.");
-        else if (summ1 < summ2) System.out.println("Среднее значение второго массива больше.");
-        else System.out.println("Средние значения чисел массива равны.");
+        if (summ1 > summ2) { System.out.println("Среднее значение элементов первого массива больше."); }
+        else if (summ1 < summ2) { System.out.println("Среднее значение второго массива больше."); }
+        else { System.out.println("Средние значения чисел массива равны."); }
     }
     public int[] newArray(int[] array, int numToDel){   //удаляем из массива переданное число
         int count = 0;
         for (int i : array){
             if (i == numToDel) count++;    //определяем количество вхождений переданного числа в массив
         }
-        if (count == 0){
-            System.out.println("Заданное число не входит в переданный массив.");
-            return null;
-        }
+        if (count == 0){ return array; }
         int[] newArray = new int[array.length - count]; //создаем новый массив нужного размера
-        int i = 0;
-        int j = 0;
-        for ( ; i < array.length ; ){
-            if (array[i] == numToDel){
-              i++;
-              continue;
-            }
+        for (int i = 0, j = 0; i < array.length; i++){
+            if (array[i] == numToDel){ continue; }
             newArray[j] = array[i];
             j++;
-            i++;
         }
         return newArray;
     }
 
     public void minMaxMed (int[] arr3){  ////находим минимальное, максимальное и среднее значение
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+        int min = arr3[0];               //прочитал, что так делать дурной тон, больше не буду.
+        int max = arr3[0];               //это у меня просто флэшбэки с джавараш)
         int summ = 0;
         for (int i = 0; i < arr3.length; i++){
             arr3[i] = (int)(Math.random() * 1000);
-            if (arr3[i] > max) max = arr3[i];
-            if (arr3[i] < min) min = arr3[i];
+            if (arr3[i] > max) { max = arr3[i]; }
+            if (arr3[i] < min) { min = arr3[i]; }
             summ += arr3[i];
         }
         System.out.println("Максимально число в массиве равно " + max);
