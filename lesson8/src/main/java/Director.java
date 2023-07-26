@@ -5,9 +5,15 @@ import java.util.Arrays;
 public class Director extends Employee{
     private ArrayList<Employee> subordinateWorkers = new ArrayList<>();
 
-    public Director(String name, String secondName, int experience, EmployeePosition position) {
-        super(name, secondName, experience, position);
+    public Director(String name, String secondName, int experience) {
+        super(name, secondName, experience);
     }
+
+    @Override
+    public EmployeePosition getPosition() {
+        return EmployeePosition.DIRECTOR;
+    }
+
     public ArrayList<Employee> getSubordinateWorkers() {
         return subordinateWorkers;
     }

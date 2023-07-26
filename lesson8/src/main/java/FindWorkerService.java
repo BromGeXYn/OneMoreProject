@@ -1,26 +1,18 @@
 import java.util.ArrayList;
 
 public class FindWorkerService{
-    private static boolean isWorker = false;
-
-    public boolean getIsWorker() {
-        return isWorker;
-    }
 
     public boolean findWorker(Director director, String workerSecName){
         ArrayList<Employee> list = director.getSubordinateWorkers();
         for (Employee employee : list){
-            //String s = employee.getSecondName();
             if (employee.getSecondName().equals(workerSecName)){
-                isWorker = true;
-            }
-        }
-        for (Employee employee : list){
-            if (employee instanceof Director){
+                return true;
+            } else if (employee.getPosition() == EmployeePosition.DIRECTOR){
                 findWorker((Director) employee, workerSecName);
+            } else {
+                break;
             }
         }
-        isWorker = getIsWorker();
-        return isWorker;
+        return false;
     }
 }

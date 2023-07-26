@@ -2,14 +2,13 @@ public abstract class Employee {
     private String name;
     private String secondName;
     private int experience;
-    private EmployeePosition position;
 
-    public Employee(String name, String secondName, int experience, EmployeePosition position) {
+    public Employee(String name, String secondName, int experience) {
         this.name = name;
         this.secondName = secondName;
         this.experience = experience;
-        this.position = position;
     }
+    public abstract EmployeePosition getPosition();
 
     public String getName() {
         return name;
@@ -34,7 +33,7 @@ public abstract class Employee {
                 "name='" + name + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", experience=" + experience +
-                ", position=" + position +
+                ", position=" + getPosition() +
                 ", salary=" + getSalary() +
                 '}';
     }
