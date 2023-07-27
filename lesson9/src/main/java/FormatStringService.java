@@ -26,11 +26,15 @@ public class FormatStringService {
         System.out.println(isContain);
     }
     public static void isBeginsWith(String text, String subString){
-        boolean isBegins = (text.startsWith(subString));
+        String lowerCase = text.toLowerCase();
+        String lowerCase1 = subString.toLowerCase();
+        boolean isBegins = (lowerCase.startsWith(lowerCase1));
         System.out.println(isBegins);
     }
     public static void isEndsWith(String text, String subString) {
-        boolean isEnds = (text.endsWith(subString));
+        String lowerCase = text.toLowerCase();
+        String lowerCase1 = subString.toLowerCase();
+        boolean isEnds = (lowerCase.endsWith(lowerCase1));
         System.out.println(isEnds);
     }
 }
