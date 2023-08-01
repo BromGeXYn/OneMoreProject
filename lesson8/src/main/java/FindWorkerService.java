@@ -8,9 +8,7 @@ public class FindWorkerService{
             if (employee.getSecondName().equals(workerSecName)){
                 return true;
             } else if (employee.getPosition() == EmployeePosition.DIRECTOR){
-                findWorker((Director) employee, workerSecName);
-            } else {
-                break;
+                return findWorker((Director) employee, workerSecName);
             }
         }
         return false;

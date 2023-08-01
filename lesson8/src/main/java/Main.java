@@ -14,7 +14,7 @@ public class Main {
         System.out.println(director1.toString());
         System.out.println(worker1.toString());
         FindWorkerService service = new FindWorkerService();
-        boolean isWorker = service.findWorker(director2, "Britva");
+        boolean isWorker = service.findWorker(director1, "Britva");
         System.out.println(isWorker);
 
     }
