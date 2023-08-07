@@ -1,0 +1,4 @@
+254458666495659 - Document number must starts with "docnum" or "contract"!
+dfgkgfdk4345324526245 - Document number must be 15 characters!
+45465456464654654456 - Document number must be 15 characters!
+lkhjkjhlhglhjfjw - Document number must be 15 characters!
