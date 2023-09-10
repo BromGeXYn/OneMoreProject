@@ -1,17 +1,16 @@
 import java.sql.SQLException;
+import java.util.Map;
 
 public class MainApp {
     public static void main(String[] args) throws SQLException {
         StudentService service = new StudentService();
         service.addStudentToDb(new Student("user", false, 33, 2));
-        service.showInfo();
-        service.delStudentFromDb(13); ///удаляет очень тупо, в лоб(
-        service.showInfo();
+        service.delStudentFromDb(13);
+        service.findById(3);
         City.addCityToDb(new City(7,"New-York"));
-        City.showCityInfo();
         City.delCityFromDb(7);
-        City.showCityInfo();
-
+        Map<Student, City> studentCityMap = service.getInfo();
+        service.showAllInfo(studentCityMap);
     }
 
 }
