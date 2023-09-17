@@ -24,21 +24,23 @@
 
 </form>
     <hr>
-<ul>
+<table border = '1' width="350">
+    <col width="150" >
+    <col width="150" >
+    <col width="50" >
 <%
     Object cars1 = request.getAttribute("cars");
     if (cars1 != null){
         List<Car> cars = (List<Car>)request.getAttribute("cars");
         for (Car car : cars) {
             out.print("<form action='/delete' method = 'post'>");
-            out.print("<li>" + car.getModel() + " Brand: " + car.getBrandName());
-            out.print("<input type = 'hidden' name = 'deleteId' value = '" + car.getId() + "'>");
-            out.print("<input type='submit' value='Delete'>");
-            out.print("</li>");
-            out.print("</form>");
+            out.print("<tr><td>" + car.getModel() + "</td><td>" + car.getBrandName());
+            out.print("<input type = 'hidden' name = 'deleteId' value = '" + car.getId() + "'>"  + "</td>");
+            out.print("<td><input type='submit' value='Delete'>");
+            out.print("</form></td></tr>");
         }
     }
 %>
-</ul>
+</table>
 </body>
 </html>
