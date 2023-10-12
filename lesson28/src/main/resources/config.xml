@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.lesson28.Wallet" name="wallet">
+        <constructor-arg value="1000"/>
+    </bean>
+    <bean class="org.lesson28.Horse" name="horse1">
+        <constructor-arg name="name" value="horse1"/>
+        <constructor-arg name="speed" value="10"/>
+    </bean>
+    <bean class="org.lesson28.Horse" name="horse2">
+        <constructor-arg name="name" value="horse2"/>
+        <constructor-arg name="speed" value="10"/>
+    </bean>
+    <bean class="org.lesson28.Horse" name="horse3">
+        <constructor-arg name="name" value="horse3"/>
+        <constructor-arg name="speed" value="10"/>
+    </bean>
+    <bean class="org.lesson28.Rider" name="rider1">
+        <constructor-arg name="name" value="rider1"/>
+    </bean>
+    <bean class="org.lesson28.Rider" name="rider2">
+        <constructor-arg name="name" value="rider2"/>
+    </bean>
+    <bean class="org.lesson28.Rider" name="rider3">
+        <constructor-arg name="name" value="rider3"/>
+    </bean>
+    <bean class="org.lesson28.Crew" name="crew1">
+        <constructor-arg name="horse" ref="horse1"/>
+        <constructor-arg name="rider" ref="rider1"/>
+        <constructor-arg name="name" value="crew1"/>
+    </bean>
+    <bean class="org.lesson28.Crew" name="crew2">
+        <constructor-arg name="horse" ref="horse2"/>
+        <constructor-arg name="rider" ref="rider2"/>
+        <constructor-arg name="name" value="crew2"/>
+    </bean>
+    <bean class="org.lesson28.Crew" name="crew3">
+        <constructor-arg name="horse" ref="horse3"/>
+        <constructor-arg name="rider" ref="rider3"/>
+        <constructor-arg name="name" value="crew3"/>
+    </bean>
+    <bean class="org.lesson28.RaceImpl" name="race" autowire="constructor">
+<!--        <constructor-arg name="wallet" ref="wallet"/>-->
+
+    </bean>
+
+
+</beans>
