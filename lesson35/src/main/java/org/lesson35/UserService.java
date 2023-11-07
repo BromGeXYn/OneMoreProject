@@ -2,7 +2,11 @@ package org.lesson35;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.lesson35.entity.UserEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserService {
 
@@ -46,18 +50,16 @@ public class UserService {
         session.close();
     }
 
-//    public void findByActiveTask() {
-//        List<UserEntity> list = new ArrayList<>();
-//        Session session = HibernateConfig.create();
-//        Transaction transaction = session.beginTransaction();
-//        Query query = session.createQuery("from UserEntity as users join users.tasks where TaskEntity.taskStatus = ?1 or TaskEntity.taskStatus = ?2");
-//        query.setParameter(1, TaskStatus.NEW);
-//        query.setParameter(2, TaskStatus.INPROGRESS);
-//        list = query.list();
-//        //from TaskEntity as tasks join tasks.user where tasks.taskStatus = ?1 or tasks.taskStatus = ?2
-//        transaction.commit();
-//        session.close();
-//    }
+    public List<UserEntity> findByActiveTask() {
+        List<UserEntity> list = new ArrayList<>();
+        Session session = HibernateConfig.create();
+        Transaction transaction = session.beginTransaction();
+        Query query = session.createQuery("select distinct user from TaskEntity where taskStatus = 'NEW' or taskStatus = 'INPROGRESS'");
+        list = query.list();
+        transaction.commit();
+        session.close();
+        return list;
+    }
 
 
 

@@ -3,6 +3,8 @@ package org.lesson35;
 import org.lesson35.entity.TaskEntity;
 import org.lesson35.entity.UserEntity;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -68,7 +70,8 @@ public class Main {
         taskService.taskStatusUpd(4, TaskStatus.FINISHED);
 //        List<TaskEntity> byUser = taskService.findByUser(1);
 //        System.out.println(byUser);
-//        service.findByActiveTask();
+        List<UserEntity> byActiveTask = service.findByActiveTask();
+        System.out.println(byActiveTask);
     }
 
 }
