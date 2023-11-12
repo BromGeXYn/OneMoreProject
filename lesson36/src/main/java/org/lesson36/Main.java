@@ -4,6 +4,7 @@ import org.lesson36.dto.UserDto;
 import org.lesson36.entity.TaskEntity;
 import org.lesson36.entity.UserEntity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Main {
@@ -15,19 +16,19 @@ public class Main {
 
         UserEntity user1 = UserEntity.builder()
                 .name("user1")
-                .birthdate("03-03-1995")
+                .birthdate(LocalDate.of(1995, 3, 3))
                 .isMan(true)
                 .role(Role.Admin)
                 .build();
         UserEntity user2 = UserEntity.builder()
                 .name("user2")
-                .birthdate("01-01-1990")
+                .birthdate(LocalDate.of(1990, 1, 1))
                 .isMan(false)
                 .role(Role.User)
                 .build();
         UserEntity user3 = UserEntity.builder()
                 .name("user2")
-                .birthdate("01-01-1990")
+                .birthdate(LocalDate.of(1990, 1, 1))
                 .isMan(false)
                 .role(Role.Support)
                 .build();
@@ -75,13 +76,21 @@ public class Main {
 //        System.out.println(byActiveTask);
 
         UserDto userDto = UserDto.builder()
-                .name("user2")
+//                .name(null)
+                //.isMan(false)
+                //.role(Role.Support)
+                //.birthdateTo(LocalDate.of(1989, 2, 2))
+               // .birthdateFrom(LocalDate.of(1989, 2, 2))
                 .build();
 
         System.out.println("________________________________");
 
         List<UserEntity> userEntities = service.criteriaFind(userDto);
         System.out.println(userEntities);
+
+        System.out.println("________________________________");
+        List<UserEntity> userEntities1 = taskService.criteriaFindByTaskStatus(userDto, TaskStatus.FINISHED);
+        System.out.println(userEntities1);
     }
 
 }

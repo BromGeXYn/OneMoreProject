@@ -4,6 +4,7 @@ import lombok.*;
 import org.lesson36.Role;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -21,10 +22,11 @@ public class UserEntity {
     private String name;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private String birthdate;
+    private LocalDate birthdate;
     private boolean isMan;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER,
+    cascade = CascadeType.ALL)
     private List<TaskEntity> tasks;
 
 

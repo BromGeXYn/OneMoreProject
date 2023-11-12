@@ -1,9 +1,13 @@
 package org.lesson36;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
+import org.lesson36.dto.UserDto;
 import org.lesson36.entity.TaskEntity;
+import org.lesson36.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,22 @@ public class TaskService {
         session.update(taskEntity);
         transaction.commit();
         session.close();
+    }
+    public List<UserEntity> criteriaFindByTaskStatus (UserDto userDto, TaskStatus taskStatus) {
+        List list;
+        Session session = HibernateConfig.create();
+        Transaction transaction = session.beginTransaction();
+        Criteria criteria = session.createCriteria(UserEntity.class, "ue");
+        Criteria crTask = criteria.createCriteria("ue.tasks", "te");
+        if (userDto != null) {
+            crTask.add(Restrictions.eq("te.taskStatus", taskStatus));
+        } else {
+            return list = criteria.list();
+        }
+        list = criteria.list();
+        transaction.commit();
+        session.close();
+        return list;
     }
 
 

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.lesson36.Role;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,8 +16,11 @@ public class UserDto {
 
     private String name;
     private Role role;
-    private String dateFrom;
-    private String dateTo;
+    private LocalDate birthdateTo;
+    private LocalDate birthdateFrom;
     private boolean isMan;
 
+    public boolean getIsMan() {
+        return isMan;
+    }
 }

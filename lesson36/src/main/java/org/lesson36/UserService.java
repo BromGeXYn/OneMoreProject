@@ -1,14 +1,18 @@
 package org.lesson36;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.lesson36.dto.UserDto;
 import org.lesson36.entity.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class UserService {
 
@@ -61,24 +65,42 @@ public class UserService {
         session.close();
         return list;
     }
-    public List<UserEntity> criteriaFind (UserDto userDto) { ///name = "user1"
+    public List<UserEntity> criteriaFind (UserDto userDto) {
+        List list;
         Session session = HibernateConfig.create();
         Transaction transaction = session.beginTransaction();
         Criteria criteria = session.createCriteria(UserEntity.class);
-        //criteria.add(Restrictions.eq("name", userDto.getName()));
-        List list = criteria.list();
+
+        criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        if (userDto == null) {
+            return list = criteria.list();
+        } else {
+            if (isNotBlank(userDto.getName())) {
+                criteria.add(Restrictions.eq("name", userDto.getName()));
+            }
+            if (userDto.getRole() != null) {
+                criteria.add(Restrictions.eq("role", userDto.getRole()));
+            }
+            if (BooleanUtils.isTrue(userDto.getIsMan())) {
+                criteria.add(Restrictions.eq("isMan", true));
+            }
+            if (BooleanUtils.isTrue(userDto.getIsMan())) {
+                criteria.add(Restrictions.eq("isMan", false));
+            }
+            if (userDto.getBirthdateFrom() != null) {
+                criteria.add(Restrictions.gt("birthdate", userDto.getBirthdateFrom()));
+            }
+            if (userDto.getBirthdateTo() != null) {
+                criteria.add(Restrictions.lt("birthdate", userDto.getBirthdateTo()));
+            }
+//            if (userDto.getList() != null) {
+//                criteria.add(Restrictions.sqlRestriction(""))
+//            }
+        }
+        list = criteria.list();
         transaction.commit();
         session.close();
         return list;
     }
-
-//        if (userDto == null) {
-//            return list = criteria.list();
-//        } else {
-//            if (isNotBlank(userDto.getName())) {
-//                criteria.add(Restrictions.eq("name", userDto.getName()));
-//            }
-//        }
-
 
 }
