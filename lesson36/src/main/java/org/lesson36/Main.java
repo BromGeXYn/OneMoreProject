@@ -89,7 +89,7 @@ public class Main {
         System.out.println(userEntities);
 
         System.out.println("________________________________");
-        List<UserEntity> userEntities1 = taskService.criteriaFindByTaskStatus(userDto, TaskStatus.FINISHED);
+        List<UserEntity> userEntities1 = taskService.criteriaFindByTaskStatus(TaskStatus.FINISHED);
         System.out.println(userEntities1);
     }
 

@@ -84,7 +84,7 @@ public class UserService {
             if (BooleanUtils.isTrue(userDto.getIsMan())) {
                 criteria.add(Restrictions.eq("isMan", true));
             }
-            if (BooleanUtils.isTrue(userDto.getIsMan())) {
+            if (BooleanUtils.isFalse(userDto.getIsMan())) {
                 criteria.add(Restrictions.eq("isMan", false));
             }
             if (userDto.getBirthdateFrom() != null) {
@@ -93,9 +93,7 @@ public class UserService {
             if (userDto.getBirthdateTo() != null) {
                 criteria.add(Restrictions.lt("birthdate", userDto.getBirthdateTo()));
             }
-//            if (userDto.getList() != null) {
-//                criteria.add(Restrictions.sqlRestriction(""))
-//            }
+
         }
         list = criteria.list();
         transaction.commit();
