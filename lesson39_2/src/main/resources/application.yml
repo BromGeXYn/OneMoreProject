@@ -1,0 +1,12 @@
+spring:
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .jsp
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lesson39_database
+    username: postgres
+    password: 617835
